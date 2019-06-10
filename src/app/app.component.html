@@ -1,8 +1,15 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:left" class="container">
-  <h1>
-    Posts
-  </h1>
-  <app-post-list *ngFor="let post of posts" [nomPostList]="post.title" [textePostList]="post.content" [newDate]="post.created_at"></app-post-list>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" routerLinkActive="active" routerLink="posts">Posts</a>
+      <a class="nav-item nav-link" routerLinkActive="active" routerLink="nouveau">Nouveau post</a>
+    </div>
+</nav>
+<br>
+<div class="container">
+  <div class="row">
+    <router-outlet></router-outlet>
+  </div>
+</div>
 
-<router-outlet></router-outlet>
+
+

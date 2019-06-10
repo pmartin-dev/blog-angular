@@ -17,8 +17,6 @@ export class PostListItemComponent implements OnInit {
   nbreloves:number = 0;
   lovedStatus:number = 3;
 
-  
-
   constructor() { }
 
   ngOnInit() {
@@ -30,6 +28,10 @@ export class PostListItemComponent implements OnInit {
 
   onMoinsLove(){
     this.nbrenotloves += 1;
+  }
+
+  onDeletePost(){
+
   }
 
 }

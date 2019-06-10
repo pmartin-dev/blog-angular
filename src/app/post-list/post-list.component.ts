@@ -6,8 +6,6 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./post-list.component.scss']
 })
 
-
-
 export class PostListComponent implements OnInit {
   @Input() nomPostList: string;
   @Input() textePostList: string;
