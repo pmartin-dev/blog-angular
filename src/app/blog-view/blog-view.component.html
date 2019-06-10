@@ -1,0 +1,6 @@
+<div style="text-align:left" class="container">
+  <h1>
+    Posts
+  </h1>
+  <app-post-list *ngFor="let post of posts" [nomPostList]="post.title" [textePostList]="post.content" [newDate]="post.created_at"></app-post-list>
+</div>
