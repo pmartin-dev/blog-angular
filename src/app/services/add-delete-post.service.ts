@@ -8,54 +8,65 @@ export class AddDeletePostService {
 
     date = new Date();
 
-  posts = [{
-    id: 1,
-    title: 'Mon premier post',
-    content: 'Tempor sit elit dolore laboris Lorem tempor sint tempor eu fugiat veniam qui elit anim. Esse est consectetur incididunt.',
-    loveIts: 0,
-    created_at: this.date,
-  }, {
-    id: 2,
-    title: 'Mon deuxième post',
-    content: 'Laborum et reprehenderit esse esse non. Ea irure amet ea mollit Lorem commodo enim reprehenderit. Enim sit voluptate sint velit eiusmod.',
-    loveIts: 0,
-    created_at: this.date
-  },{
-    id: 3,
-    title: 'Mon troisième post',
-    content: 'Minim nostrud commodo consectetur esse nisi labore. Veniam nostrud adipisicing dolor quis officia dolor irure excepteur dolore.',
-    loveIts: 0,
-    created_at: this.date
-  }];
-
     deletePost(id:number){
-      // this.posts.delete(this.posts[id]);
+
+      this.getPostsFromServer()
+    .subscribe(
+      response => {
+        let posts = response;
+
+        // this.posts.delete(this.posts[id]);
+
+      },
+      error => {console.log('erreur de récupération!', error); }
+    )
+
+
+
+
+
     }
+
 
     addPost(title:string, corps:string){
+      this.getPostsFromServer()
+    .subscribe(
+      response => {
+        let posts = response;
+        
         const postObject = {
-            id: 0,
-            title: '',
-            content: '',
-            loveIts: 0,
-            created_at: this.date
-        };
+          id: 0,
+          title: '',
+          content: '',
+          loveIts: 0,
+          created_at: this.date
+         };
         postObject.title = title;
         postObject.content = corps;
-        
-        postObject.id = this.posts[(this.posts.length - 1)].id + 1;
-        this.posts.push(postObject);
+        postObject.id = posts[(posts.length - 1)].id + 1;
+        posts.push(postObject);
+
+        this.httpClient
+        .put('https://http-client-demo-3228b.firebaseio.com/posts.json', posts)
+        .subscribe()
+
+      },
+      error => {console.log('erreur de récupération!', error); }
+    )
+
+
     }
 
-    savePostsToServer(){
+    savePostsToServer() {
+      let posts;
       this.httpClient
-      .put('https://http-client-demo-3228b.firebaseio.com/posts.json', this.posts)
+      .put('https://http-client-demo-3228b.firebaseio.com/posts.json', posts)
       .subscribe(
         response => {console.log('Enregistrement terminé !'); },
         error => {console.log('erreur de sauvegarde!', error); }
       )}
 
     getPostsFromServer(){
-      return this.httpClient.get<any []>('https://http-client-demo-3228b.firebaseio.com/posts.json')
+      return this.httpClient.get<any []>('https://http-client-demo-3228b.firebaseio.com/posts.json');
     }
 }
