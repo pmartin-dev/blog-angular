@@ -1,6 +1,7 @@
 import { AddDeletePostService } from './services/add-delete-post.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { BlogViewComponent } from './blog-view/blog-view.component';
 import { FourOFourComponent } from './four-o-four/four-o-four.component';
 import { FormsModule } from '@angular/forms';
+
 
 const appRoutes: Routes = [
   { path: 'nouveau', component: NewPostComponent},
@@ -33,6 +35,7 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [AddDeletePostService],

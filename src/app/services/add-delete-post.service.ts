@@ -1,8 +1,14 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+@Injectable()
 export class AddDeletePostService {
+
+  constructor (private httpClient: HttpClient) {}
 
     date = new Date();
 
-  posts= [{
+  posts = [{
     id: 1,
     title: 'Mon premier post',
     content: 'Tempor sit elit dolore laboris Lorem tempor sint tempor eu fugiat veniam qui elit anim. Esse est consectetur incididunt.',
@@ -23,7 +29,7 @@ export class AddDeletePostService {
   }];
 
     deletePost(id:number){
-      this.posts.delete(this.posts[id]);
+      // this.posts.delete(this.posts[id]);
     }
 
     addPost(title:string, corps:string){
@@ -41,4 +47,15 @@ export class AddDeletePostService {
         this.posts.push(postObject);
     }
 
+    savePostsToServer(){
+      this.httpClient
+      .put('https://http-client-demo-3228b.firebaseio.com/posts.json', this.posts)
+      .subscribe(
+        response => {console.log('Enregistrement terminé !'); },
+        error => {console.log('erreur de sauvegarde!', error); }
+      )}
+
+    getPostsFromServer(){
+      return this.httpClient.get<any []>('https://http-client-demo-3228b.firebaseio.com/posts.json')
+    }
 }
