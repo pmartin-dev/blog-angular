@@ -1,3 +1,4 @@
+import { AddDeletePostService } from './../services/add-delete-post.service';
 import { Component, Input, OnInit } from '@angular/core';
 
 
@@ -10,6 +11,7 @@ export class PostListItemComponent implements OnInit {
   @Input() nomPostListItem:string;
   @Input() textePostListItem:string;
   @Input() newDate:string;
+  @Input() indexSupp:number;
 
   nomPost = "Titre du poste";
   textPost = "Texte";
@@ -17,7 +19,7 @@ export class PostListItemComponent implements OnInit {
   nbreloves:number = 0;
   lovedStatus:number = 3;
 
-  constructor() { }
+  constructor(private addDeletePostService: AddDeletePostService) { }
 
   ngOnInit() {
   }
@@ -31,7 +33,7 @@ export class PostListItemComponent implements OnInit {
   }
 
   onDeletePost(){
-
+    this.addDeletePostService.deletePost(this.indexSupp);
   }
 
 }

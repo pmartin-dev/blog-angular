@@ -2,5 +2,5 @@
   <h1>
     Posts
   </h1>
-  <app-post-list *ngFor="let post of posts" [nomPostList]="post.title" [textePostList]="post.content" [newDate]="post.created_at"></app-post-list>
+  <app-post-list *ngFor="let post of posts; let i = index" [nomPostList]="post.title" [textePostList]="post.content" [newDate]="post.created_at" [indexSupp]="i">ok</app-post-list>
 </div>

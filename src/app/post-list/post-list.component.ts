@@ -10,6 +10,7 @@ export class PostListComponent implements OnInit {
   @Input() nomPostList: string;
   @Input() textePostList: string;
   @Input() newDate: string;
+  @Input() indexSupp: string;
 
   constructor() {
 

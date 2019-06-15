@@ -20,9 +20,5 @@ export class BlogViewComponent implements OnInit {
         this.posts = response;
         console.log('Récupération terminée !', response); },
       error => {console.log('erreur de récupération!', error); }
-    )
-
-
-    // this.posts = this.addDeletePostService.posts;
-  }
+    )}
 }

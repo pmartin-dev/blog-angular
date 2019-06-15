@@ -9,23 +9,20 @@ export class AddDeletePostService {
     date = new Date();
 
     deletePost(id:number){
-
+      
       this.getPostsFromServer()
     .subscribe(
       response => {
         let posts = response;
+        posts.splice(id, id);
 
-        // this.posts.delete(this.posts[id]);
+      this.httpClient
+      .put('https://http-client-demo-3228b.firebaseio.com/posts.json', posts)
+      .subscribe()
 
       },
       error => {console.log('erreur de récupération!', error); }
-    )
-
-
-
-
-
-    }
+    )}
 
 
     addPost(title:string, corps:string){
@@ -49,7 +46,6 @@ export class AddDeletePostService {
         this.httpClient
         .put('https://http-client-demo-3228b.firebaseio.com/posts.json', posts)
         .subscribe()
-
       },
       error => {console.log('erreur de récupération!', error); }
     )

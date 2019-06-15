@@ -21,8 +21,6 @@ export class NewPostComponent implements OnInit {
     const corps = form.value['corps'];
 
     this.addDeletePostService.addPost(title, corps);
-    // this.addDeletePostService.savePostsToServer();
     this.router.navigate(['/posts']);
-    // this.addDeletePostService.savePostsToServer();
   }
 }
