@@ -11,6 +11,7 @@ export class PostListComponent implements OnInit {
   @Input() textePostList: string;
   @Input() newDate: string;
   @Input() indexSupp: string;
+  @Input() nbreIts:number;
 
   constructor() {
 

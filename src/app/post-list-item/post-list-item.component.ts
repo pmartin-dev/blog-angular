@@ -12,11 +12,11 @@ export class PostListItemComponent implements OnInit {
   @Input() textePostListItem:string;
   @Input() newDate:string;
   @Input() indexSupp:number;
+  @Input() nbreIts:number;
 
   nomPost = "Titre du poste";
   textPost = "Texte";
-  nbrenotloves:number = 0;
-  nbreloves:number = 0;
+
   lovedStatus:number = 3;
 
   constructor(private addDeletePostService: AddDeletePostService) { }
@@ -25,11 +25,14 @@ export class PostListItemComponent implements OnInit {
   }
 
   onPlusLove(){
-    this.nbreloves += 1;
+    // this.nbreloves += 1;
+    this.nbreIts += 1;
+
   }
 
   onMoinsLove(){
-    this.nbrenotloves += 1;
+    // this.nbrenotloves += 1;
+    this.nbreIts -= 1;
   }
 
   onDeletePost(){

@@ -1,15 +1,16 @@
 <li [ngClass]="{'list-group-item': true,
-'list-group-item-success': nbrenotloves < nbreloves,
-'list-group-item-danger': nbrenotloves > nbreloves}">
+'list-group-item-success': nbreIts > 0,
+'list-group-item-danger': nbreIts < 0}">
 
   <h4>{{ nomPostListItem }}</h4>
   <p class="dateformat">{{newDate | date:'dd/MM/y hh:mm a'}}</p>
   <p>{{ textePostListItem }}</p>
+  <p>{{ nbreIts }}</p>
   <!-- <p>{{ postTitle }}</p>
   <p>{{ postContent }}</p>
   <p>ici: {{titlelistitem}}</p>
   <p>ici: {{bodylistitem}}</p> -->
-  <button type="button" class="btn btn-success" (click)="onPlusLove()">Love it ({{ nbreloves }})</button>
-  <button type="button" class="btn btn-danger" (click)="onMoinsLove()">Don't love it ({{ nbrenotloves }})</button>
-  <button type="button" class="btn btn-danger supppost" (click)="onDeletePost([indexSupp])">Supprimer le post {{indexSupp}}</button>
+  <button type="button" class="btn btn-success" (click)="onPlusLove()">Love it</button>
+  <button type="button" class="btn btn-danger" (click)="onMoinsLove()">Don't love it</button>
+  <button type="button" class="btn btn-danger supppost" (click)="onDeletePost([indexSupp])">Supprimer le post</button>
 </li>
