@@ -1,10 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Injectable()
 export class AddDeletePostService {
+  
 
-  constructor (private httpClient: HttpClient) {}
+  constructor (private httpClient: HttpClient, private router: Router) {}
 
     date = new Date();
 
@@ -14,14 +17,14 @@ export class AddDeletePostService {
     .subscribe(
       response => {
         let posts = response;
-        posts.splice(id, id);
+        posts.splice(id, 1);
+        
 
       this.httpClient
       .put('https://http-client-demo-3228b.firebaseio.com/posts.json', posts)
-      .subscribe()
-
-      },
-      error => {console.log('erreur de récupération!', error); }
+      .subscribe();
+    },
+      error => {console.log('erreur de récupération!', error); },
     )}
 
 
@@ -45,7 +48,11 @@ export class AddDeletePostService {
 
         this.httpClient
         .put('https://http-client-demo-3228b.firebaseio.com/posts.json', posts)
-        .subscribe()
+        .subscribe(
+          () => {
+            this.router.navigate(['/posts']);
+          }
+        )
       },
       error => {console.log('erreur de récupération!', error); }
     )
