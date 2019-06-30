@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 @Injectable()
 export class AddDeletePostService {
   
+posts:any;
 
   constructor (private httpClient: HttpClient, private router: Router) {}
 
@@ -22,10 +23,20 @@ export class AddDeletePostService {
 
       this.httpClient
       .put('https://http-client-demo-3228b.firebaseio.com/posts.json', posts)
-      .subscribe();
+      .subscribe(
+
+        () => {
+
+
+        }
+
+      );
     },
       error => {console.log('erreur de récupération!', error); },
-    )}
+    )
+  }
+
+   
 
 
     addPost(title:string, corps:string){

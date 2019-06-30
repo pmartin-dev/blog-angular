@@ -1,5 +1,7 @@
 import { AddDeletePostService } from './../services/add-delete-post.service';
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { Post } from '../model/post.model';
 
 @Component({
   selector: 'app-blog-view',
@@ -8,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogViewComponent implements OnInit {
 
-  posts = [];
+  posts: Post[] = [];
+  postSubject = new Subject<Post[]>();
 
   constructor(private addDeletePostService: AddDeletePostService) { }
+
+  emitPost() {
+    this.postSubject.next(this.posts);
+  }
   
 
   ngOnInit() {

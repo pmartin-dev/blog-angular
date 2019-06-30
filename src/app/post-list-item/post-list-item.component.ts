@@ -25,19 +25,18 @@ export class PostListItemComponent implements OnInit {
   }
 
   onPlusLove(){
-    // this.nbreloves += 1;
     this.nbreIts += 1;
 
   }
 
   onMoinsLove(){
-    // this.nbrenotloves += 1;
     this.nbreIts -= 1;
   }
 
   onDeletePost(){
     this.addDeletePostService.deletePost(this.indexSupp);
     console.log(this.indexSupp);
+
   }
 
 }
