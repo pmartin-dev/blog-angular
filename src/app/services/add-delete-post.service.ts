@@ -26,6 +26,11 @@ posts:any;
       .subscribe(
 
         () => {
+          if(this.router.url === '/posts'){
+            this.router.navigate(['/']);
+          } else {
+            this.router.navigate(['/posts']);   
+          }
 
 
         }
